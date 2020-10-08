@@ -10,7 +10,7 @@
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  YOUR NAME (), 
+ *         Author:  imad
  *   Organization:  
  *
  * =====================================================================================
@@ -19,7 +19,13 @@
 #ifndef image_lib_h 
 #define image_lib_h
    
-   int affiche(char path);
+#include <SDL2/SDL.h>
+
+SDL_Surface* load(const char* path);
+SDL_Surface* nouvelle_image(const int height, const int width);
+
+Uint32 get_pixel(SDL_Surface* image, int h, int w);
+void set_pixel(SDL_Surface* image, int h, int w, Uint32 pixel);
    
  #endif
 

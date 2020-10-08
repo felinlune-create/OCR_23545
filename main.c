@@ -14,6 +14,11 @@
  *
  * =====================================================================================
  */
+
+
+/*
+*  !!!!!!!!!!!!!!!!!!!!!!!!!  ne vas plus marcher car les fichier en question on été modifier.!!!!!!!!!!!!!!!!!!
+*/
 #include <stdlib.h>
 #include "image_lib.h"
 #include <stdio.h>
