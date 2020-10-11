@@ -31,9 +31,9 @@ SDL_surface *load(const char *path)
 	if(!image)
 	{
     	errx(3,"Erreur de chargement de l'image : %s",IMG_GetError());
-    	return image;
+    	
 	}
-	
+	return image;
 }
 
  

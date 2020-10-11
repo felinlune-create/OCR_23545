@@ -1,1 +1,7 @@
--> ocr 
+-> ocr
+
+
+pour tester votre lib :
+
+gcc -Werror -Wall -Wextra temp.c `sdl2-config --cflags`  -o  executable `sdl2-config --libs`
+
