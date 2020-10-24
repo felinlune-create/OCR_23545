@@ -12,4 +12,6 @@ void preprocessing(const char *image_path)
     image_binarize(image);
     SDL_SaveBMP(image, g_path_img_binarize);
 
+    SDL_FreeSurface(image);
+
 }
