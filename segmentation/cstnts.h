@@ -1,6 +1,6 @@
 // Created by mrsb75 on 02/10/2020.
-#ifndef UTILS_CONSTANTS_H
-#define UTILS_CONSTANTS_H
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 #include <stddef.h>
 

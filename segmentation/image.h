@@ -1,6 +1,6 @@
 // Created by mrsb75 on 02/10/2020.
-#ifndef UTILS_IMAGE_H
-#define UTILS_IMAGE_H
+#ifndef IMAGE_H
+#define IMAGE_H
 
 #include <stdbool.h>
 

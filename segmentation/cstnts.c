@@ -2,7 +2,6 @@
 
 #include "cstnts.h"
 
-const char *g_path_img_deskew = "testocr.bmp";
 const char *g_path_img_segmentation = "testocr.bmp";
 const char *g_path_img_chars = "image_chars";
 
