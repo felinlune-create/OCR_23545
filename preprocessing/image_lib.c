@@ -37,8 +37,8 @@ SDL_surface *load(const char *path)
 }
 
  
-//creer une blanche au dimension rentrer.
-SDL_Surface *nouvelle_image(const int height, const int width)
+//
+SDL_Surface *NewImage(const int height, const int width)
 {
 	SDL_Rect dim;
 	dim.y = 0;
@@ -50,7 +50,7 @@ SDL_Surface *nouvelle_image(const int height, const int width)
 	return surface;
 }
 
-//prend une image et les coordonnées de l'image du pixel voulue et renvoie le pixel en question.
+//get the value of a pixel
 Uint32 get_pixel(SDL_Surface* image, int h, int w)
 {
 	Uint8* p = image_get_pixel_ref(image, h, w);
@@ -81,7 +81,7 @@ Uint32 get_pixel(SDL_Surface* image, int h, int w)
 	}
 }
 
-//permet de remplacer un pixel avec celui entrer necessite une image,coordonnée et un pixel.
+//set de new value to a pixel
 void set_pixel(SDL_Surface* image, int h, int w, Uint32 pixel)
 {
 	Uint8* p = image_get_pixel_ref(image, h, w);

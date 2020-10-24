@@ -1,4 +1,4 @@
-#include "sdl.h"
+#include "image_lib.h"
 
 void grayscale(DSL_Surface *image)
 {
@@ -6,12 +6,15 @@ void grayscale(DSL_Surface *image)
     {
         for(int j = 0; j < image ->j, j++)
         {
+            Uint32 pixel = get_pixel(image_surface, wid, hei);
             Uint8 r, g, b;
-            Uint32 pixel = image_get_pixel(image, i, j)
-            SDL_GetRGB(pixel, image-> format, &r, &g, &b);
-            Uint avg = 0.2126*r + 0.7152*g + 0.0722*b; //formula of luminance
-            Uint32 new_pixel = SDL_MapRGB(image->format, avg, avg, avg);
-            image_set_pixel(image, h, w, new_pixel);
+            SDL_GetRGB(pixel, image_surface->format, &r, &g, &b);
+            int average = 0.3 * r + 0.59 * g + 0.11 * b;
+            r = average;
+            g = average;
+            b = average;
+            Uint32 pixel2 = SDL_MapRGB(image_surface->format, r, g, b);
+            put_pixel(image_surface, wid, hei, pixel2);
         }
     }
 }

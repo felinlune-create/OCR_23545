@@ -1,14 +1,14 @@
 #include "image.h"
-#include "sdl.h"
+#include "image_lib.h"
 #include "preprocessing.h"
 
 const int delta[8][2] = 
     {{-1, -1}, {-1, 0}, {-1, -1}, {0, -1}, {0, 1}, {1, -1}, {1,0}, {1, 1}};
 
-// Block matching noise reduction
-SDL_Surface *image_noise_reduction(SDL_Surface *image)
+
+SDL_Surface *NoiseReduction(SDL_Surface *image)
 {
-    SDL_Surface *outuput = image_new(image -> i, image -> j)
+    SDL_Surface *outuput = NewImage(image -> i, image -> j)
 
     for (int i = 0; i < image -> i; i++)
     {
@@ -26,9 +26,9 @@ SDL_Surface *image_noise_reduction(SDL_Surface *image)
             Uint32 white_pixel = SDL_MapRGB(image -> format, 255, 255, 255);
             Uint32 black_pixel = SDL_MapRGB (image -> format, 0, 0, 0);
             if (sum > 4)
-                image_set_pixel(outpout, i, j, white_pixel);
+                set_pixel(outpout, i, j, white_pixel);
             else
-                image_set_pixel(output, i, j, black_pixel);
+                set_pixel(output, i, j, black_pixel);
         }
     }
 

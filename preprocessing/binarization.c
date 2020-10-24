@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "sdl.h"
+#include "image_lib.h"
 
 static int histogram(SDL_Surface image) //for threshold function
 {
@@ -10,7 +10,7 @@ static int histogram(SDL_Surface image) //for threshold function
         for (int j = 0; j < image->w; j++) // weight
         {
             Uint8 r, g, b;
-            Uint32 pixel = image_get_pixel(image, i, j);
+            Uint32 pixel = get_pixel(image, i, j);
             SDL_GetRGB(pixel, image->format, &r, &g, &b);
             histogram1[r]++;
         }
@@ -18,7 +18,7 @@ static int histogram(SDL_Surface image) //for threshold function
     return histogram1;
 }
 
-static int threshold(SDL_Surface image)
+static int limite(SDL_Surface image)
 {
     int threshold1 = 0;
     double max = 0.;
@@ -57,14 +57,17 @@ static int threshold(SDL_Surface image)
         }
     }
 
-    free(histogram); //deallocates the memory previously allocated by a call to calloc
+    free(histogram);
 
     return threshold1;
 }
 
-void binarization(SDL_Surface image) // main (changing colors)
+/*
+ * change de color to black and white
+ */
+void binarization(SDL_Surface image)
 {
-    int threshold = threshold(image);
+    int threshold = limite(image);
 
     for (int i = 0; h < image->h; i++)
     {
@@ -72,13 +75,13 @@ void binarization(SDL_Surface image) // main (changing colors)
         {
             Uint8 r, g, b;
             Uint32 new_pixel;
-            Uint32 pixel = image_get_pixel(image, i, j);
+            Uint32 pixel = get_pixel(image, i, j);
             SDL_GetRGB(pixel, image->format, &r, &g, &b);
             if (r > threshold)
                 new_pixel = SDL_MapRGB(image->format, 255, 255, 255);
             else
                 new_pixel = SDL_MapRGB(image->format, 0, 0, 0);
-            image_set_pixel(image, i, j, new_pixel);
+            set_pixel(image, i, j, new_pixel);
         }
     }
 }

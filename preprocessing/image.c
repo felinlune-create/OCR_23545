@@ -4,7 +4,7 @@
 bool is_white_pixel(SDL_Surface *image, int h, int w)
 {
     Uint8 r, g, b;
-    Uint32 pixel = image_get_pixel(image, h, w);
+    Uint32 pixel = get_pixel(image, h, w);
     SDL_GetRGB(pixel, image->format, &r, &g, &b);
     return r == 255 && g == 255 && b == 255;
 }
@@ -31,12 +31,12 @@ void draw_line(
     SDL_Surface *image, Uint32 pixel, int height, int w_start, int w_end)
 {
     for (int w = w_start; w <= w_end; w++)
-        image_set_pixel(image, height, w, pixel);
+        set_pixel(image, height, w, pixel);
 }
 
 void draw_column(
     SDL_Surface *image, Uint32 pixel, int width, int h_start, int h_end)
 {
     for (int h = h_start; h <= h_end; h++)
-        image_set_pixel(image, h, width, pixel);
+        set_pixel(image, h, width, pixel);
 }

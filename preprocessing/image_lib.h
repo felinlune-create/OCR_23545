@@ -22,7 +22,7 @@
 #include <SDL2/SDL.h>
 
 SDL_Surface* load(const char* path);
-SDL_Surface* nouvelle_image(const int height, const int width);
+SDL_Surface* NewImage(const int height, const int width);
 
 Uint32 get_pixel(SDL_Surface* image, int h, int w);
 void set_pixel(SDL_Surface* image, int h, int w, Uint32 pixel);

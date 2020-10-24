@@ -1,5 +1,5 @@
 
-#include "sdl.h"
+#include "image_lib.h"
 #include "preprocessing.h"
 
 void preprocessing(const char *image_path)
