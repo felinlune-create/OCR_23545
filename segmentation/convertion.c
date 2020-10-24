@@ -5,13 +5,13 @@
 
 struct Matrix *convertTheImageToMatrix(SDL_Surface *image)
 {
-    struct Matrix *matrix = matrix_alloc(image->h * image->w, 1);
-    for (int h = 0; h < image->h; h++)
+    struct Matrix *matrix = matrix_alloc(image->i * image->w, 1);
+    for (int i = 0; i < image->i; i ++)
     {
-        for (int w = 0; w < image->w; w++)
+        for (int j = 0; j < image->j; j++)
         {
-            float val = (is_white_pixel(image, h, w)) ? 0. : 1.;
-            matrix_set(matrix, h * image->w + w, 0, val);
+            float val = (is_white_pixel(image, i ,  j )) ? 0. : 1.;
+            matrix_set(matrix, i * image->w +  j , 0, val);
         }
     }
     return matrix;
