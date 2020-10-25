@@ -29,7 +29,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2425f234-3335-447f-b76f-fd78e0dc8680" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing/preprocessing.c" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/preprocessing.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/segmentation/mainomar.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/segmentation/mainomar.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../exemple" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +71,8 @@
       <updated>1603542501143</updated>
       <workItem from="1603542502216" duration="4244000" />
       <workItem from="1603552039959" duration="1153000" />
-      <workItem from="1603624506129" duration="604000" />
+      <workItem from="1603624506129" duration="1487000" />
+      <workItem from="1603640913287" duration="998000" />
     </task>
     <servers />
   </component>
@@ -93,5 +101,13 @@
     </state>
     <state x="2663" y="297" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603547496211" />
     <state x="784" y="317" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1603552576947" />
+    <state x="745" y="236" width="486" height="633" key="RollbackChangesDialog" timestamp="1603641488060">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="745" y="236" width="486" height="633" key="RollbackChangesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603641488060" />
+    <state x="774" y="467" width="438" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603641478772">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="774" y="467" width="438" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1603641478772" />
   </component>
 </project>
