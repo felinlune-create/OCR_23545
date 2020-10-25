@@ -5,7 +5,7 @@
 
 void preprocessing(const char *image_path);
 
-void image_grayscale(SDL_Surface *image);
-void image_binarize(SDL_Surface *image);
+void grayscale(SDL_Surface *image);
+void binarization(SDL_Surface *image);
 
 #endif

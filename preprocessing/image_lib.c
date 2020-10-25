@@ -25,13 +25,12 @@
 
 
 //load une image et la renvoie.
-SDL_surface *load(const char *path)
+SDL_Surface *load(const char *path)
 {
 	SDL_Surface *image = IMG_LoadBMP(path);
 	if(!image)
 	{
-    	errx(3,"Erreur de chargement de l'image : %s",IMG_GetError());
-    	
+    	    errx(3,"Erreur de chargement de l'image : %s",IMG_GetError());
 	}
 	return image;
 }
@@ -50,10 +49,17 @@ SDL_Surface *NewImage(const int height, const int width)
 	return surface;
 }
 
+static Uint8* _get_pixel(SDL_Surface *image, int h, int w)
+{
+    int bpp = image->format->BytesPerPixel;
+    Uint8 *pixels = image->pixels;
+    return pixels + h * image->pitch + w * bpp;
+}
+
 //get the value of a pixel
 Uint32 get_pixel(SDL_Surface* image, int h, int w)
 {
-	Uint8* p = image_get_pixel_ref(image, h, w);
+	Uint8* p = _get_pixel(image, h, w);
 
 	switch (image->format->BytesPerPixel)
 	{
@@ -84,7 +90,7 @@ Uint32 get_pixel(SDL_Surface* image, int h, int w)
 //set de new value to a pixel
 void set_pixel(SDL_Surface* image, int h, int w, Uint32 pixel)
 {
-	Uint8* p = image_get_pixel_ref(image, h, w);
+	Uint8* p = _get_pixel(image, h, w);
 
 	switch (image->format->BytesPerPixel)
 	{
