@@ -27,7 +27,7 @@
 //load une image et la renvoie.
 SDL_Surface *load(const char *path)
 {
-	SDL_Surface *image = IMG_LoadBMP(path);
+	SDL_Surface *image = SDL_LoadBMP(path);
 	if(!image)
 	{
     	    errx(3,"Erreur de chargement de l'image : %s",IMG_GetError());
