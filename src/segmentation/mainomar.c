@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <limits.h>
 
+/*
 void wait_for_keypressed()
 {
     SDL_Event event;
@@ -21,9 +22,10 @@ void wait_for_keypressed()
         SDL_PollEvent(&event);
     } while(event.type != SDL_KEYUP);
 }
-
+*/
 int main()
 {
+/*
     char cwd[PATH_MAX];
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
         printf("Current working dir: %s\n", cwd);
@@ -31,7 +33,9 @@ int main()
         perror("getcwd() error");
         return 1;
     }
+  */
     segmentation(input);
+  /*
     SDL_Window* fenetre;
     SDL_Renderer* renderer;//Déclaration du renderer
 
@@ -48,7 +52,6 @@ int main()
         printf("Erreur lors de la creation d'une fenetre : %s",SDL_GetError());
         return EXIT_FAILURE;
     }
-
     renderer = SDL_CreateRenderer(fenetre, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_Surface* image = SDL_LoadBMP("output/testocr.bmp");
     if(!image)
@@ -56,8 +59,10 @@ int main()
         printf("Erreur de chargement de l'image : %s",SDL_GetError());
         return -1;
     }
+
     SDL_Texture* monImage = SDL_CreateTextureFromSurface(renderer,image);  //La texture monImage contient maintenant l'image importée
-    wait_for_keypressed();
+    wait_for_keypressed();   
     SDL_FreeSurface(image);
+*/
     return 0;
 }
