@@ -1,11 +1,36 @@
 // Created by mrsb75 on 24/10/2020.
 #include <stdio.h>
 #include "segmentation.h"
+#include "cstnts.h"
+#include <unistd.h>
+#include <limits.h>
 
+void wait_for_keypressed()
+{
+    SDL_Event event;
+
+    // Wait for a key to be down.
+    do
+    {
+        SDL_PollEvent(&event);
+    } while(event.type != SDL_KEYDOWN);
+
+    // Wait for a key to be up.
+    do
+    {
+        SDL_PollEvent(&event);
+    } while(event.type != SDL_KEYUP);
+}
 
 int main()
 {
-
+    char cwd[PATH_MAX];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        printf("Current working dir: %s\n", cwd);
+    } else {
+        perror("getcwd() error");
+        return 1;
+    }
     segmentation(input);
     SDL_Window* fenetre;
     SDL_Renderer* renderer;//Déclaration du renderer
@@ -25,13 +50,14 @@ int main()
     }
 
     renderer = SDL_CreateRenderer(fenetre, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    SDL_Surface* image = SDL_LoadBMP("../../output/testocr.bmp");
+    SDL_Surface* image = SDL_LoadBMP("output/testocr.bmp");
     if(!image)
     {
         printf("Erreur de chargement de l'image : %s",SDL_GetError());
         return -1;
     }
     SDL_Texture* monImage = SDL_CreateTextureFromSurface(renderer,image);  //La texture monImage contient maintenant l'image importée
+    wait_for_keypressed();
     SDL_FreeSurface(image);
     return 0;
 }
