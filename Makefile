@@ -1,8 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra  -std=c99 -pedantic -O3 \
+	$(shell pkg-config --cflags gtk+-3.0) \
 	$(shell pkg-config --cflags sdl2)
-LDFLAGS =`sdl-config --libs --cflags`
-LDLIBS = $(shell pkg-config --libs sdl2) -lSDL2_image
+LDFLAGS =
+LDLIBS = -lm $(shell pkg-config --libs gtk+-3.0) \
+	$(shell pkg-config --libs sdl2) -lSDL2_image
 VALGRIND = valgrind
 
 SRC = $(shell find src -name '*.c')
@@ -13,8 +15,6 @@ DEP = ${SRC:.c=.d}
 all: ocr
 	mkdir -p output
 	
-
-
 ocr: ${OBJ}
 	@echo "Linking ocr binary..."
 	@$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
@@ -38,4 +38,4 @@ check-valgrind: ocr
 		--show-leak-kinds=all \
 		--track-origins=yes \
 		--suppressions=.glib.suppression \
-		./ocr --test xor
+		

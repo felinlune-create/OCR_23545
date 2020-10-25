@@ -1,4 +1,3 @@
-// Created by mrsb75 on 02/10/2020.
 #include <err.h>
 #include <stdlib.h>
 
@@ -191,4 +190,3 @@ void matrix_print(struct Matrix *matrix)
         printf("\n");
     }
 }
-

@@ -1,5 +1,5 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef UTILS_MATRIX_H
+#define UTILS_MATRIX_H
 
 #include <stddef.h>
 #include <stdio.h>
@@ -40,4 +40,3 @@ int matrix_argmax(struct Matrix *matrix);
 void matrix_print(struct Matrix *matrix);
 
 #endif
-
