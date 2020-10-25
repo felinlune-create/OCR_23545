@@ -1,17 +1,47 @@
 
 #include "image_lib.h"
 #include "preprocessing.h"
-
-void preprocessing(const char *image_path)
+#include <SDL2/SDL.h>
+SDL_Surface* display_image(SDL_Surface *img)
 {
-    SDL_Surface image = image_load(image_path);
+    SDL_Surface *screen;
 
-    image_grayscale(image);
-    SDL_SaveBMP(image, g_path_img_grayscale);
+    // Set the window to the same size as the image
+    screen = SDL_SetVideoMode(img->w, img->h, 0, SDL_SWSURFACE);
+    if (screen == NULL)
+    {
+        // error management
+        errx(1, "Couldn't set %dx%d video mode: %s\n",
+             img->w, img->h, SDL_GetError());
+    }
 
-    image_binarize(image);
-    SDL_SaveBMP(image, g_path_img_binarize);
+    // Blit onto the screen surface
+    if(SDL_BlitSurface(img, NULL, screen, NULL) < 0)
+        warnx("BlitSurface error: %s\n", SDL_GetError());
+
+    // Update the screen
+    SDL_UpdateRect(screen, 0, 0, img->w, img->h);
+
+    // return the screen for further uses
+    return screen;
+}
+
+int preprocessing(const char *image_path)
+{
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Surface *image;
+    image = load(image_path);
+    SDL_Surface *screen =  display_image(image);
+
+    grayscale(image);
+    SDL_SaveBMP(image, "output/grayscaled_image.bmp");
+
+    binarization(image);
+    SDL_SaveBMP(image, "output/binarized_image.bmp");
+
 
     SDL_FreeSurface(image);
+    SDL_Quit();
 
+    return 0;
 }

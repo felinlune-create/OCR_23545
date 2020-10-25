@@ -1,5 +1,5 @@
 #include "image.h"
-#include "sdl.h"
+#include "image_lib.h"
 
 bool is_white_pixel(SDL_Surface *image, int h, int w)
 {

@@ -2,9 +2,9 @@
 
 #include "image_lib.h"
 
-static int histogram(SDL_Surface image) //for threshold function
+static int *histogram(SDL_Surface *image) //for threshold function
 {
-    int histogram1 = calloc(256, sizeof(int)); // allocates the requested memory and returns a pointer to it
+    int *histogram1 = calloc(256, sizeof(int)); // allocates the requested memory and returns a pointer to it
     for (int i = 0; i < image->h; ++i) // height
     {
         for (int j = 0; j < image->w; j++) // weight
@@ -18,7 +18,7 @@ static int histogram(SDL_Surface image) //for threshold function
     return histogram1;
 }
 
-static int limite(SDL_Surface image)
+static int limite(SDL_Surface *image)
 {
     int threshold1 = 0;
     double max = 0.;
@@ -27,18 +27,18 @@ static int limite(SDL_Surface image)
     int w_background = 0;
     int pixels = image->h * image->w;
 
-    int histogram = histogram(image);
+    int *histogram1 = histogram(image);
     for (int i = 0; i < 256; i++)
-        sum += i * histogram[i];
+        sum += i * histogram1[i];
 
     for (int j = 0; j < 256; j++)
     {
-        w_background += histogram[j];
+        w_background += histogram1[j];
         int w_foreground = pixels - w_background;
         if (w_background == 0 || w_foreground == 0)
             continue;
 
-        background += i * histogram[i];
+        background += j * histogram1[j];
         int foreground = sum - background;
 
         double _w_background = w_background;
@@ -53,11 +53,11 @@ static int limite(SDL_Surface image)
         if (variance > max)
         {
             max = variance;
-            threshold1 = i;
+            threshold1 =j;
         }
     }
 
-    free(histogram);
+    free(histogram1);
 
     return threshold1;
 }
@@ -65,23 +65,23 @@ static int limite(SDL_Surface image)
 /*
  * change de color to black and white
  */
-void binarization(SDL_Surface image)
+void binarization(SDL_Surface *image)
 {
     int threshold = limite(image);
 
-    for (int i = 0; h < image->h; i++)
+    for (int i = 0; i < image->h; i++)
     {
-        for (int j = 0; w < image->w; j++)
+        for (int j = 0; j < image->w; j++)
         {
             Uint8 r, g, b;
-            Uint32 new_pixel;
+            Uint32 n_pixel;
             Uint32 pixel = get_pixel(image, i, j);
             SDL_GetRGB(pixel, image->format, &r, &g, &b);
             if (r > threshold)
-                new_pixel = SDL_MapRGB(image->format, 255, 255, 255);
+                n_pixel = SDL_MapRGB(image->format, 255, 255, 255);
             else
-                new_pixel = SDL_MapRGB(image->format, 0, 0, 0);
-            set_pixel(image, i, j, new_pixel);
+                n_pixel = SDL_MapRGB(image->format, 0, 0, 0);
+            set_pixel(image, i, j, n_pixel);
         }
     }
 }
