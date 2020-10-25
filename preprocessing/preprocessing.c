@@ -45,3 +45,8 @@ int preprocessing(const char *image_path)
 
     return 0;
 }
+
+int main()
+{
+    preprocessing("text.png")
+}
